@@ -106,17 +106,14 @@ post '/1.1/direct_messages/new.json' do
 	if params['text'].nil?
 		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply a text to DM."}'
 	end
-	if params['recipient_screen_name'].nil?
-		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply a recipient screen_name."}'
-	end
-	if params['recipient_id'].nil?
-		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply recipient id."}'
+	if params['screen_name'].nil?
+		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply a screen_name."}'
 	end
 	@twitter_response['created_at'] = Time.now
 	@twitter_response['text'] = params['text']
 	@twitter_response['recipient_screen_name'] = params['screen_name']
-	@twitter_response['sender_screen_name'] = params['screen_name']	
-	@twitter_response['recipient_id'] = params['user_id']
+	@twitter_response['sender_screen_name'] = params['screen_name']
+	@twitter_response['recipient_id'] ||= params['user_id']
 	File.open("/messages/" + "request_" + DateTime.now.strftime('%Q') + ".json", 'w') {|f| f.write(params.to_json) }
 	File.open("/messages/" + "response_" + DateTime.now.strftime('%Q') + ".json", 'w') {|f| f.write(@twitter_response.to_json) }
 	@twitter_response.to_json
