@@ -20,6 +20,6 @@ twitter:
 
 Getting started
 ---------------
-The following curl command can be run to verify that it is working (assumes host is 'twitter.docker'):
+The following curl command (taken from the twitter API page) can be run to verify that it is working (assumes host is 'twitter.docker'):
 
-`$ curl --request 'POST' 'http://twitter.docker:9494/1.1/direct_messages/new.json' --data 'screen_name=theseancook&text=hello%2C+tworld.+welcome+to+1.1.' --header 'Authorization: OAuth oauth_consumer_key="Z0Ayuc96lScewfh4KhEG8xwUI", oauth_nonce="a7cfad874146e290b874ae5d7905fa79", oauth_signature="antp%2FOigNLroc0UxzVex5fmCRBY%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1449679310", oauth_version="1.0"' --verbose"`
+`$ curl --request 'POST' 'http://twitter.docker:9494/1.1/direct_messages/new.json' --data 'screen_name=theseancook&text=hello%2C+tworld.+welcome+to+1.1.' --header 'Authorization: OAuth oauth_consumer_key="KEY", oauth_nonce="OAUTH", oauth_signature="SIGNATURE", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1449679310", oauth_version="1.0"' --verbose"`
