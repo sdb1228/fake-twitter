@@ -8,6 +8,6 @@ RUN mkdir /messages
 WORKDIR app
 
 RUN bundle install
-EXPOSE 9494
+EXPOSE 9495
 
 CMD ruby app.rb

@@ -2,7 +2,7 @@ require 'sinatra'
 require 'json'
 
 set :bind, '0.0.0.0'
-set :port, 9494
+set :port, 9495
 
 before do
 	@twitter_response = JSON.parse('{
