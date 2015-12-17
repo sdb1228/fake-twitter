@@ -4,16 +4,16 @@ creates a docker image that will fake the twitter endpoint https://api.twitter.c
 
 # Running
  -------
-`$ docker run -it -p "9494:9494" sdb1228/fake-twitter`
+`$ docker run -it -p "9495:9495" sdb1228/fake-twitter`
 Note that `VIRTUAL_HOST` environment variables can be added if run with dinghy client
-`$ docker run -it -p "9494:9494" -e "VIRTUAL_HOST=twitter.docker" sdb1228/fake-twitter`
+`$ docker run -it -p "9495:9495" -e "VIRTUAL_HOST=twitter.docker" sdb1228/fake-twitter`
 
 Or from docker-compose.yml:
 ```
 twitter:
   image: sdb1228/fake-twitter
   ports:
-    - "9494:9494"
+    - "9495:9495"
   environment:
     VIRTUAL_HOST: "twitter.docker"
 ```
