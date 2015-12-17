@@ -104,10 +104,13 @@ before do
 end
 post '/1.1/direct_messages/new.json' do
 	if params['text'].nil?
-		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply a text to DM."}'
+		return '{"errors":[{"code":38,"message":"Text parameter is missing."}]}'
 	end
-	if params['screen_name'].nil?
-		return '{"request":"\/1.1\/direct_messages\/new.json","error":"Must supply a screen_name."}'
+	if params['screen_name'].nil? && params['user_id'].nil?
+		return '{"errors":[{"code":38,"message":"Recipient (user, screen name, or id) parameter is missing."}]}'
+	end
+	if params['text'].length > 140
+		return '{"errors":[{"code":354,"message":"The text of your direct message is over the max character limit."}]}'
 	end
 	@twitter_response['created_at'] = Time.now
 	@twitter_response['text'] = params['text']
