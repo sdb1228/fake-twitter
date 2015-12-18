@@ -10,4 +10,6 @@ WORKDIR app
 RUN bundle install
 EXPOSE 9495
 
+VOLUME /messages/twitter
+
 CMD ruby app.rb
