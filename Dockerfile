@@ -6,7 +6,8 @@ COPY ./*.rb /app/
 
 RUN useradd -u 1000 -M docker \
   && mkdir -p /messages/twitter \
-  && chown docker /messages
+  && chown docker /messages \
+  && chown -R docker /messages/*
 
 
 WORKDIR app
