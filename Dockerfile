@@ -12,10 +12,11 @@ RUN useradd -u 1000 -M docker \
 WORKDIR app
 
 RUN bundle install
+USER docker
 EXPOSE 9495
 
 VOLUME /messages/twitter
 
-USER docker
+
 
 CMD ruby app.rb
