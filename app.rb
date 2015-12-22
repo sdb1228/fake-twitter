@@ -116,7 +116,8 @@ post '/1.1/direct_messages/new.json' do
 	@twitter_response['text'] = params['text']
 	@twitter_response['recipient_screen_name'] = params['screen_name']
 	@twitter_response['sender_screen_name'] = params['screen_name']
-	@twitter_response['recipient_id'] ||= params['user_id']
+	@twitter_response['recipient_id'] = params['user_id']
+	@twitter_response['sender_id'] = params['user_id']
 	File.open("/messages/twitter/" + "request_" + DateTime.now.strftime('%Q') + ".json", 'w') {|f| f.write(params.to_json) }
 	File.open("/messages/twitter/" + "response_" + DateTime.now.strftime('%Q') + ".json", 'w') {|f| f.write(@twitter_response.to_json) }
 	@twitter_response.to_json
