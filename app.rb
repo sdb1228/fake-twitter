@@ -110,7 +110,7 @@ post '/1.1/direct_messages/new.json' do
 	if params['screen_name'].nil? && params['user_id'].nil?
 		return '{"errors":[{"code":38,"message":"Recipient (user, screen name, or id) parameter is missing."}]}'
 	end
-	if params['text'].length > 140
+	if params['text'].length > 10000
 		return '{"errors":[{"code":354,"message":"The text of your direct message is over the max character limit."}]}'
 	end
 	@twitter_response['created_at'] = Time.now
