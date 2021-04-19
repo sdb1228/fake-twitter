@@ -103,7 +103,7 @@ before do
 					}')
 
 end
-post '/1.1/direct_messages/new.json' do
+post '/1.1/direct_messages/events/new.json' do
 	if params['text'].nil?
 		return '{"errors":[{"code":38,"message":"Text parameter is missing."}]}'
 	end
